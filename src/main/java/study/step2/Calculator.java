@@ -13,7 +13,7 @@ public class Calculator {
         if (text == null || text.isEmpty()) {
             return 0;
         }
-        return sum(splitWithDelimiter(text));
+        return sum(splitWithDelimiter(text)).getNumber();
     }
 
     private static String[] splitWithDelimiter(String text) {
@@ -24,12 +24,12 @@ public class Calculator {
         return text.split(COMMA_COLON_DELIMITER);
     }
 
-    private static Integer sum(String[] stringArr) {
-        int sum = 0;
+    private static PositiveNumber sum(String[] stringArr) {
+        PositiveNumber positiveNumber = PositiveNumber.ZERO;
         for (String str : stringArr) {
-            sum += getNumber(str);
+            positiveNumber = positiveNumber.add(getNumber(str));
         }
-        return sum;
+        return positiveNumber;
     }
 
     private static int convertNumber(String numberStr) {
@@ -40,11 +40,8 @@ public class Calculator {
         }
     }
 
-    private static int getNumber(String numberStr) {
+    private static PositiveNumber getNumber(String numberStr) {
         int convertedNumber = convertNumber(numberStr);
-        if (convertedNumber < 0) {
-            throw new RuntimeException("음수는 들어갈 수 없습니다.");
-        }
-        return convertedNumber;
+        return new PositiveNumber(convertedNumber);
     }
 }

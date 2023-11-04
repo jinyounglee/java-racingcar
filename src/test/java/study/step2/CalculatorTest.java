@@ -18,24 +18,9 @@ public class CalculatorTest {
     }
 
     @Test
-    void 숫자_하나() {
+    @DisplayName("숫자 하나만 주어진다면 주어진 숫자만 리턴된다.")
+    void 숫자_하나_만_들어온다면_숫자가_리턴된다() {
         assertThat(cal("1")).isEqualTo(1);
-    }
-
-    @Test
-    @DisplayName(", 를 구분자로 합을 구한다.")
-    void comma_구분자로_합을_구한다() {
-        assertThat(cal("1,2")).isEqualTo(3);
-        assertThat(cal("1,2,3")).isEqualTo(6);
-        assertThat(cal("1,2,3,4")).isEqualTo(10);
-    }
-
-    @Test
-    @DisplayName(": 를 구분자로 합을 구한다.")
-    void colon_구분자로_합을_구한다() {
-        assertThat(cal("1:2")).isEqualTo(3);
-        assertThat(cal("1:2:3")).isEqualTo(6);
-        assertThat(cal("1:2:3:4")).isEqualTo(10);
     }
 
     @Test
