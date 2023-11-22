@@ -27,7 +27,7 @@ public class Moving {
     }
 
     private boolean isMovable(NumberGenerator numberGenerator) {
-        return numberGenerator.generate() > MINIMUM_MOVABLE_NUMBER;
+        return numberGenerator.generate() >= MINIMUM_MOVABLE_NUMBER;
     }
 
     private int getPosition() {
@@ -39,12 +39,16 @@ public class Moving {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Moving moving = (Moving) o;
-        return position == moving.position
-                && Objects.equals(numberGenerator, moving.numberGenerator);
+        return position == moving.position;
+
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(numberGenerator, position);
+    }
+
+    public int currentPosition() {
+        return position;
     }
 }

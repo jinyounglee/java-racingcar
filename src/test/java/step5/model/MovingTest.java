@@ -13,7 +13,7 @@ class MovingTest {
     @DisplayName("움직이면 거리가 1칸 이동한다.")
     void move() {
         Moving moving = new Moving(0, new MovableNumberGenerator());
-        assertThat(moving.move()).isEqualTo(new Moving(1, new MovableNumberGenerator()));
+        assertThat(moving.move().currentPosition()).isEqualTo(new Moving(1, new MovableNumberGenerator()).currentPosition());
     }
 
     @Test
@@ -23,5 +23,4 @@ class MovingTest {
                 .hasMessage("0 보다 작은 수 만큼 이동 할 수 없습니다.");
 
     }
-
 }
